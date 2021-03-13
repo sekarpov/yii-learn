@@ -11,17 +11,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">
 
+    <?= Html::a(Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success pull-right']) ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'category_id',
@@ -30,7 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             //'enabled',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
+            ],
         ],
     ]); ?>
 

@@ -16,7 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
+    <div class="form-group pull-right">
+        <?= Html::a(Yii::t('app', 'Cancel'), ['tag/index'],['class' => 'btn btn-default']) ?>
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 

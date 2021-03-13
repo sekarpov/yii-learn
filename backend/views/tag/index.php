@@ -11,23 +11,23 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tag-index">
 
+    <?= Html::a(Yii::t('app', 'Create Tag'), ['create'], ['class' => 'btn btn-success pull-right']) ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Tag'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'slug',
             'title',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
+            ],
         ],
     ]); ?>
 
