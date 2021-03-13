@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "{{%news}}".
@@ -28,18 +29,43 @@ class News extends \yii\db\ActiveRecord
         return '{{%news}}';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title',
+                // 'slugAttribute' => 'slug',
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['category_id', 'enabled'], 'integer'],
-            [['slug', 'title', 'description'], 'required'],
+            [['title', 'description'], 'required'],
+
+            [['category_id'], 'integer'],
+
+            [['enabled'], 'boolean'],
+
             [['description'], 'string'],
+
             [['slug', 'title'], 'string', 'max' => 256],
+
             [['slug'], 'unique'],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
+
+            [
+                ['category_id'],
+                'exist',
+                'skipOnError' => true,
+                'targetClass' => Category::className(),
+                'targetAttribute' => ['category_id' => 'id'],
+                'message' => 'Category is not exist',
+            ],
         ];
     }
 
