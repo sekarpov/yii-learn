@@ -1,20 +1,25 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Tag */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form kartik\form\ActiveForm */
 ?>
 
 <div class="tag-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-8">
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
     <div class="form-group pull-right">
         <?= Html::a(Yii::t('app', 'Cancel'), ['tag/index'],['class' => 'btn btn-default']) ?>
