@@ -18,15 +18,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
 
             'id',
-            'category_id',
-            'slug',
+            [
+                'label' => 'Category',
+                'attribute' => 'category_id',
+                'value' => 'category.title'
+            ],
             'title',
             'description:ntext',
-            //'enabled',
-
+            [
+                'attribute' => 'enabled',
+                'format' => 'boolean'
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

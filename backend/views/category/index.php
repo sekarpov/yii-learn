@@ -1,5 +1,6 @@
 <?php
 
+use backend\helpers\EnabledHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -21,10 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
 
             'id',
-            'slug',
             'title',
-            'enabled',
-
+            'slug',
+            [
+                'attribute' => 'enabled',
+                'filter' => EnabledHelper::getEnabledFilter(),
+                'value' => function ($model, $key, $index, $column) {
+                    return EnabledHelper::getEnabledView($model->enabled);
+                }
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
