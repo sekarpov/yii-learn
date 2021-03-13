@@ -74,7 +74,22 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // Request
+        //var_dump(Yii::$app->request->getCookies());
+        //var_dump(Yii::$app->request->get());
+        //var_dump(Yii::$app->request->post());
+        //var_dump(Yii::$app->request->getIsGet());
+        //var_dump(Yii::$app->request->getIsPost());
+        //...
+
+        // Response
+        //Yii::$app->response->setStatusCode(404);
+        //Yii::$app->response->headers->set(...);
+        //Yii::$app->response->content = '...';
+        //Yii::$app->response->redirect(['news/index', 302]);
+        //Yii::$app->response->sendFile(...);
+
+
     }
 
     /**

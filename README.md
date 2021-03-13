@@ -1,2 +1,2 @@
-Yii 2 Demo Shop
+YII2 Advanced Learn - ITVDN
 ===============================
