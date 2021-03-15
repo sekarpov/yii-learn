@@ -1,7 +1,13 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\ListView;
 
-//echo '<h2>' . $title . '</h2>';
 echo Html::tag('h2', $title);
-echo Html::a('Go to view page', ['news/view', 'id' => 10]);
+
+echo ListView::widget([
+   'dataProvider' => $dataProvider,
+   'itemView' => '_news_item_short',
+   'itemOptions' => ['tag' => null],
+   'options' => ['class' => 'list-group'],
+]);

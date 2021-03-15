@@ -1,7 +1,20 @@
 <?php
+/**
+ * @var string $title
+ * @var \yii\db\ActiveQuery $model
+ */
 
 use yii\helpers\Html;
 
-//echo '<h2>' . $title . '</h2>';
-echo Html::tag('h2', $title);
-echo Html::a('Go to view page', ['tag/view', 'id' => 10]);
+echo Html::tag('h2', Html::encode($title));
+
+if ($model->count() > 0) {
+    /** @var \frontend\models\Tag $tag */
+    foreach ($model->each() as $tag) {
+        echo Html::a(
+            $tag->title,
+            ['tag/view', 'id' => $tag->id],
+            ['class' => 'btn btn-default']
+        ), ' ';
+    }
+}
