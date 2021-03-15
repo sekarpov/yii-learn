@@ -1,5 +1,6 @@
 <?php
 
+use backend\helpers\CategoryHelper;
 use yii\helpers\Html;
 use kartik\form\ActiveForm;
 
@@ -17,7 +18,7 @@ use kartik\form\ActiveForm;
         <div class="col-md-4"><?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?></div>
     </div>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?= $form->field($model, 'category_id')->dropDownList(CategoryHelper::getAvailableCategories()) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
